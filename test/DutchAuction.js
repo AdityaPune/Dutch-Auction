@@ -46,9 +46,16 @@ describe("Dutch Auction Contract", () => {
       expect(await dutch.getPrice()).to.equal(await dutch.startingPrice());
     });
 
-    it("Should transfer nft to second address", async () => {
+    it("Should say bid is not enough", async () => {
       await network.provider.send("evm_increaseTime", [7200]);
       await network.provider.send("evm_mine");
+      const price = await dutch.getPrice();
+      expect(
+        dutch.connect(addr1).buy({ value: price - 1000000 })
+      ).to.be.revertedWith("ETH sent is lesser than the price");
+    });
+
+    it("Should transfer nft to second address", async () => {
       const price = await dutch.getPrice();
       await dutch.connect(addr1).buy({ value: price });
       expect(await nft.ownerOf("100")).to.equal(addr1.address);
