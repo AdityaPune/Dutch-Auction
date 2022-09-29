@@ -2,4 +2,4 @@
 
 ## Initialize Contract with Price and End Date
 
-## Make Bids
+### Start Bidding and Buying NFTs
