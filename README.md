@@ -1,5 +1,5 @@
 # Dutch-Auction
 
-## Initialize Contract with Price and End Date
+### 1. Initialize Contract with Price and End Date
 
-### Start Bidding and Buying NFTs
+### 2. Start Bidding and Buying NFTs
